@@ -63,9 +63,7 @@ class _CalorieGoalScreenState extends State<CalorieGoalScreen> {
     Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(
-        builder: (context) => HomeScreen(
-          fullName: widget.fullName,
-        ),
+        builder: (context) => HomeScreen(fullName: widget.fullName),
       ),
       (route) => false,
     );
@@ -78,10 +76,7 @@ class _CalorieGoalScreenState extends State<CalorieGoalScreen> {
       child: DecoratedBox(
         decoration: BoxDecoration(
           gradient: const LinearGradient(
-            colors: [
-              Color(0xFF2E7D32),
-              Color(0xFFFF8F00),
-            ],
+            colors: [Color(0xFF2E7D32), Color(0xFFFF8F00)],
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
           ),

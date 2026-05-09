@@ -107,11 +107,7 @@ class _DietaryPreferencesScreenState extends State<DietaryPreferencesScreen> {
               activeColor: const Color(0xFF2E7D32),
               visualDensity: VisualDensity.compact,
             ),
-            Icon(
-              option.icon,
-              size: 22,
-              color: const Color(0xFF2E7D32),
-            ),
+            Icon(option.icon, size: 22, color: const Color(0xFF2E7D32)),
             const SizedBox(width: 6),
             Expanded(
               child: Text(
@@ -135,10 +131,7 @@ class _DietaryPreferencesScreenState extends State<DietaryPreferencesScreen> {
       child: DecoratedBox(
         decoration: BoxDecoration(
           gradient: const LinearGradient(
-            colors: [
-              Color(0xFF2E7D32),
-              Color(0xFFFF8F00),
-            ],
+            colors: [Color(0xFF2E7D32), Color(0xFFFF8F00)],
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
           ),

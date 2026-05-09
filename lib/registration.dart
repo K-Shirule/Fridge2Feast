@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'profile_setup.dart';
+import 'screens/profile_setup.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
@@ -26,9 +26,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ProfileSetupScreen(
-            email: _emailController.text.trim(),
-          ),
+          builder: (context) =>
+              ProfileSetupScreen(email: _emailController.text.trim()),
         ),
       );
     }
@@ -110,10 +109,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
-                        colors: [
-                          Color(0xFF2E7D32),
-                          Color(0xFFFF8F00),
-                        ],
+                        colors: [Color(0xFF2E7D32), Color(0xFFFF8F00)],
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
                       ),

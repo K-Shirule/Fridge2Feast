@@ -4,10 +4,7 @@ import 'dietary_preferences.dart';
 class ProfileSetupScreen extends StatefulWidget {
   final String email;
 
-  const ProfileSetupScreen({
-    super.key,
-    required this.email,
-  });
+  const ProfileSetupScreen({super.key, required this.email});
 
   @override
   State<ProfileSetupScreen> createState() => _ProfileSetupScreenState();
@@ -55,10 +52,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
     );
   }
 
-  Widget _skillOption({
-    required String title,
-    required String subtitle,
-  }) {
+  Widget _skillOption({required String title, required String subtitle}) {
     final isSelected = _selectedSkill == title;
 
     return GestureDetector(
@@ -113,10 +107,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
     return InputDecoration(
       hintText: hint,
       border: const OutlineInputBorder(),
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 14,
-        vertical: 16,
-      ),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
     );
   }
 
@@ -211,10 +202,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
 
                 const SizedBox(height: 12),
 
-                _skillOption(
-                  title: 'Beginner',
-                  subtitle: 'Just starting out',
-                ),
+                _skillOption(title: 'Beginner', subtitle: 'Just starting out'),
                 _skillOption(
                   title: 'Intermediate',
                   subtitle: 'Comfortable in the kitchen',
@@ -232,10 +220,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
-                        colors: [
-                          Color(0xFF2E7D32),
-                          Color(0xFFFF8F00),
-                        ],
+                        colors: [Color(0xFF2E7D32), Color(0xFFFF8F00)],
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
                       ),

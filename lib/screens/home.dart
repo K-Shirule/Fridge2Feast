@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'settings.dart';
+import 'recipe_results_screen.dart';
+import 'history_screen.dart';
 
 // main dashboard users see after onboarding
 class HomeScreen extends StatefulWidget {
   final String fullName;
 
-  const HomeScreen({
-    super.key,
-    required this.fullName,
-  });
+  const HomeScreen({super.key, required this.fullName});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -44,9 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final didSave = await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => SettingsScreen(
-          fullName: _fullName,
-        ),
+        builder: (context) => SettingsScreen(fullName: _fullName),
       ),
     );
 
@@ -55,19 +52,46 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  Widget _statCard({
-    required String number,
-    required String label,
-  }) {
+  void _navigateToAddIngredients() {
+    // TODO: Fernando will implement this
+    _comingSoon(context, 'Add ingredients');
+  }
+
+  void _navigateToFindRecipes() {
+    // TEMPORARY: Use sample ingredients for demo
+    // TODO: Replace with actual ingredients from Fernando's fridge feature
+    final sampleIngredients = ['chicken', 'rice', 'broccoli', 'garlic', 'eggs'];
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) =>
+            RecipeResultsScreen(ingredients: sampleIngredients),
+      ),
+    );
+  }
+
+  void _navigateToHistory() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const HistoryScreen()),
+    );
+  }
+
+  void _comingSoon(BuildContext context, String feature) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text('$feature coming soon')));
+  }
+
+  Widget _statCard({required String number, required String label}) {
     return Expanded(
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 14),
         decoration: BoxDecoration(
           color: Colors.white.withValues(alpha: 0.18),
           borderRadius: BorderRadius.circular(18),
-          border: Border.all(
-            color: Colors.white.withValues(alpha: 0.25),
-          ),
+          border: Border.all(color: Colors.white.withValues(alpha: 0.25)),
         ),
         child: Column(
           children: [
@@ -105,10 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: DecoratedBox(
         decoration: BoxDecoration(
           gradient: const LinearGradient(
-            colors: [
-              Color(0xFF2E7D32),
-              Color(0xFFFF8F00),
-            ],
+            colors: [Color(0xFF2E7D32), Color(0xFFFF8F00)],
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
           ),
@@ -161,18 +182,9 @@ class _HomeScreenState extends State<HomeScreen> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
-          textStyle: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.w700,
-          ),
+          textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
         ),
       ),
-    );
-  }
-
-  void _comingSoon(BuildContext context, String feature) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('$feature coming soon')),
     );
   }
 
@@ -191,10 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.all(22),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
-                    colors: [
-                      Color(0xFF2E7D32),
-                      Color(0xFFFF8F00),
-                    ],
+                    colors: [Color(0xFF2E7D32), Color(0xFFFF8F00)],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                   ),
@@ -269,7 +278,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
               _outlineButton(
                 text: 'Add Ingredients',
-                onPressed: () => _comingSoon(context, 'Add ingredients'),
+                onPressed: _navigateToAddIngredients,
               ),
 
               const SizedBox(height: 14),
@@ -277,7 +286,7 @@ class _HomeScreenState extends State<HomeScreen> {
               _gradientButton(
                 text: 'Find Recipes',
                 icon: Icons.auto_awesome_rounded,
-                onPressed: () => _comingSoon(context, 'Recipe generation'),
+                onPressed: _navigateToFindRecipes,
               ),
 
               const SizedBox(height: 28),
@@ -295,12 +304,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   TextButton.icon(
-                    onPressed: () => _comingSoon(context, 'History'),
+                    onPressed: _navigateToHistory,
                     icon: const Icon(Icons.history_rounded, size: 18),
                     label: const Text('History'),
-                    style: TextButton.styleFrom(
-                      foregroundColor: Colors.black,
-                    ),
+                    style: TextButton.styleFrom(foregroundColor: Colors.black),
                   ),
                 ],
               ),
@@ -320,9 +327,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       offset: const Offset(0, 10),
                     ),
                   ],
-                  border: Border.all(
-                    color: Colors.grey.shade200,
-                  ),
+                  border: Border.all(color: Colors.grey.shade200),
                 ),
                 child: Column(
                   children: [
@@ -362,8 +367,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     _gradientButton(
                       text: 'Add Your First Ingredient',
                       icon: Icons.add_rounded,
-                      onPressed: () =>
-                          _comingSoon(context, 'Add your first ingredient'),
+                      onPressed: _navigateToAddIngredients,
                     ),
                   ],
                 ),
